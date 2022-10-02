@@ -28,17 +28,19 @@ with st.container():
     st.subheader("This is Financial News Sentiment Analysis")
   with up_right_column:
     st_lottie(lottie_file,height=300,key="Financial News")
-
-with st.container():
-  st.write("---")
-  left_column,right_column=st.columns((1,2))
-  with left_column:
-    Tick_form="""
+#the Form 
+Tick_form="""
     <form action="" method="GET">
       <input type="Text" placeholer="Forexample:AAPL,Boeing,....." required>
       <button type="Submit">Check</button>
     </form>
     """
+    
+with st.container():
+  st.write("---")
+  left_column,right_column=st.columns((1,2))
+  with left_column:
+    st.markdown(Tick_form,unsafe_allow_html=True)
 with st.container():
   st.write("---")
   Data_df=pd.read_json('test.json')
