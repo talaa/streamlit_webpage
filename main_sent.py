@@ -35,11 +35,15 @@ with st.container():
   with left_column:
     Tick_form="""
     <form action="" method="GET">
-    <input type="Text" placeholer="Forexample:AAPL,Boeing,....." required>
-    <button type="Submit">Check</button>
+      <input type="Text" placeholer="Forexample:AAPL,Boeing,....." required>
+      <button type="Submit">Check</button>
     </form>
     """
-
+with st.container():
+  st.write("---")
+  Data_df=pd.read_json('test.json')
+  Data_df
+  
 df = pd.DataFrame({
   'first column': [1, 2, 3, 4],
   'second column': [10, 20, 30, 40]
@@ -48,5 +52,4 @@ df = pd.DataFrame({
 #df
 #f = open('test.json')
 #t=json.load(f)
-Data_df=pd.read_json('test.json')
-Data_df
+
