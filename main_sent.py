@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import requests
-import test as test
+
 from streamlite_lottie import st_lottie
 
 st.set_page_config(page_title="News Stock Sentiment",page_icon=":crystal_ball:",layout="wide")
@@ -45,5 +45,5 @@ df = pd.DataFrame({
 })
 
 #df
-Data_df=pd.read_json(test, lines=True)
+Data_df=pd.read_json(test.json, lines=True)
 Data_df
