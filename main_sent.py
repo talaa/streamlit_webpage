@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import requests
 
-from streamlite_lottie import st_lottie
+from streamlit_lottie import st_lottie
 
 st.set_page_config(page_title="News Stock Sentiment",page_icon=":crystal_ball:",layout="wide")
 
