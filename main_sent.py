@@ -46,7 +46,7 @@ df = pd.DataFrame({
 })
 
 #df
-#f = open('data.json')
-t=json.load('test.json')
+f = open('data.json')
+t=json.load(f)
 Data_df=pd.read_json(t, lines=True)
 Data_df
