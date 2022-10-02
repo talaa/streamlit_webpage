@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import requests
-import test.json
+import json
 
 from streamlit_lottie import st_lottie
 
