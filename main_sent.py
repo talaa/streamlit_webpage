@@ -17,13 +17,14 @@ def local_css(file_name):
     with open(file_name) as f:
         st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
+local_css("style/style.css")
 #Header Section 
 with st.container():
   up_left_column,up_right_column=st.columns(2)
   with up_left_column:
     st.title("Finanical News Analysis")
     st.subheader("This is Financial News Sentiment Analysis")
-   with up_right_column:
+  with up_right_column:
     st_lottie(lottie_file,height=300,key="Financial News")
 
 with st.container():
