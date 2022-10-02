@@ -31,7 +31,7 @@ with st.container():
 #the Form 
 Tick_form="""
     <form action="" method="GET">
-      <input type="Text" placeholer="Forexample:AAPL,Boeing,....." required>
+      <input type="Text" placeholder="Forexample:AAPL,Boeing,....." required>
       <button type="Submit">Check</button>
     </form>
     """
