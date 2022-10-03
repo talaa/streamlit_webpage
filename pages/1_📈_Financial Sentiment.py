@@ -1,8 +1,22 @@
+from logging import PlaceHolder
 import streamlit as st
 
 st.set_page_config(page_title="Financial Sentiment", page_icon="📈")
 #st.markdown("# Financial Sentiment")
-st.sidebar.header("Financial Sentiment")
+#st.sidebar.header("Financial Sentiment")
+# Setup the Side bar 
+option=st.sidebar.selectbox("Choose source",("Twitter","Stocktwits,News Channels","Wallstreetbets"))
+
+ 
+st.subheader(option)
+
+#Switch Options
+
+if (option == "Twitter"):
+  st.subheader("This is the Twitter feeds")
+if (option == "Stocktwits"):
+  symbol=st.sidebar.text_input("Symbol",PlaceHolder="AAPL")
+  Stocktwitssurl=f"https://api.stocktwits.com/api/2/streams/{symbol}.json"
 
 # Use local CSS
 def local_css(file_name):
