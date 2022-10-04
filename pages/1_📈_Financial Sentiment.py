@@ -3,7 +3,7 @@ import streamlit as st
 import yfinance as yf
 import pandas as pd
 
-st.set_page_config(page_title="Financial Sentiment", page_icon="📈")
+st.set_page_config(page_title="Financial Sentiment", page_icon="📈",layout="wide")
 #st.markdown("# Financial Sentiment")
 #st.sidebar.header("Financial Sentiment")
 # Setup the Side bar 
