@@ -2,22 +2,25 @@ from logging import PlaceHolder
 import streamlit as st
 import yfinance as yf
 import pandas as pd
+import utilities as ut
 
-st.set_page_config(page_title="Financial Sentiment", page_icon="📈")
+st.set_page_config(page_title="Financial Sentiment", page_icon="📈",layout="wide")
 #st.markdown("# Financial Sentiment")
 #st.sidebar.header("Financial Sentiment")
 # Setup the Side bar 
-option=st.sidebar.selectbox("Choose source",("Yahoo Finance","Stocktwits","News Channels","Wallstreetbets"))
-
+option=st.sidebar.selectbox("Choose source",("Yahoo Finance","Google News","News Channels","Wallstreetbets"))
+symbol=st.sidebar.text_input("Symbol",placeholder="AAPL",max_chars=5)
  
 st.subheader(option)
 
 #Switch Options
 
-if (option == "Twitter"):
-  st.subheader("This is the Twitter feeds")
+if (option == "Google News"):
+  st.subheader("This is the Google news")
+  ut.get_googlenews(symbol)
+
 if (option == "Yahoo Finance"):
-  symbol=st.sidebar.text_input("Symbol",placeholder="AAPL",max_chars=5)
+  
   #Stocktwitssurl=f"https://api.stocktwits.com/api/2/streams/{symbol}.json"
   tick = yf.Ticker(symbol)
   info=tick.info
@@ -30,12 +33,14 @@ if (option == "Yahoo Finance"):
   ne1
 
   
-  #st.write("---")
+  st.write("---")
   left_column,right_column=st.columns(2)
   with left_column:
+      st.write("financials")
       dd=pd.DataFrame(tick.financials)
       dd
   with right_column:
+      st.write("Cash Flow")
       ff=pd.DataFrame(tick.cashflow)
       ff
 
