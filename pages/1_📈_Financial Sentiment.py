@@ -8,11 +8,9 @@ st.set_page_config(page_title="Financial Sentiment", page_icon="📈",layout="wi
 #st.markdown("# Financial Sentiment")
 #st.sidebar.header("Financial Sentiment")
 # Setup the Side bar 
-<<<<<<< HEAD
+
 option=st.sidebar.selectbox("Choose source",("Yahoo Finance","Google News","News Channels","Wallstreetbets"))
-=======
-option=st.sidebar.selectbox("Choose source",("Yahoo Finance","Stocktwits","News Channels","Wallstreetbets"))
->>>>>>> d4c1b2fce58039e42a60ad44e36a01bd59d8b152
+
 symbol=st.sidebar.text_input("Symbol",placeholder="AAPL",max_chars=5)
  
 st.subheader(option)
@@ -24,11 +22,6 @@ if (option == "Google News"):
   ut.get_googlenews(symbol)
 
 if (option == "Yahoo Finance"):
-<<<<<<< HEAD
-  
-=======
-  #symbol=st.sidebar.text_input("Symbol",placeholder="AAPL",max_chars=5)
->>>>>>> d4c1b2fce58039e42a60ad44e36a01bd59d8b152
   #Stocktwitssurl=f"https://api.stocktwits.com/api/2/streams/{symbol}.json"
   tick = yf.Ticker(symbol)
   info=tick.info
