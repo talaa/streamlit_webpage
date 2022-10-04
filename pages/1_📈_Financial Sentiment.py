@@ -8,7 +8,7 @@ st.set_page_config(page_title="Financial Sentiment", page_icon="📈")
 #st.sidebar.header("Financial Sentiment")
 # Setup the Side bar 
 option=st.sidebar.selectbox("Choose source",("Yahoo Finance","Stocktwits","News Channels","Wallstreetbets"))
-
+symbol=st.sidebar.text_input("Symbol",placeholder="AAPL",max_chars=5)
  
 st.subheader(option)
 
@@ -17,7 +17,7 @@ st.subheader(option)
 if (option == "Twitter"):
   st.subheader("This is the Twitter feeds")
 if (option == "Yahoo Finance"):
-  symbol=st.sidebar.text_input("Symbol",placeholder="AAPL",max_chars=5)
+  #symbol=st.sidebar.text_input("Symbol",placeholder="AAPL",max_chars=5)
   #Stocktwitssurl=f"https://api.stocktwits.com/api/2/streams/{symbol}.json"
   tick = yf.Ticker(symbol)
   info=tick.info
