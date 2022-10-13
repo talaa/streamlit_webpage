@@ -7,7 +7,7 @@ import json
 from streamlit_lottie import st_lottie
 
 st.set_page_config(page_title="News Stock Sentiment",page_icon=":crystal_ball:",layout="wide")
-
+@st.cache
 #Load Assets
 def load_lottie(url):
   r=requests.get(url)

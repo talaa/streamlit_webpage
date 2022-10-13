@@ -5,7 +5,9 @@ import pandas as pd
 import sys
 sys.path.append("../") 
  
-from Utilities import utilities as ut
+from Utilities.utilities import *
+
+
 
 st.set_page_config(page_title="Financial Sentiment", page_icon="📈",layout="wide")
 #st.markdown("# Financial Sentiment")
@@ -22,13 +24,16 @@ st.subheader(option)
 
 if (option == "Google News"):
   st.subheader("This is the Google news")
-  ut.get_googlenews(symbol)
+  n=4
+  gn=get_googlenews(symbol,n)
+  tiset=create_add_tick(gn)
+  tiset
 
 if (option == "Yahoo Finance"):
   #Stocktwitssurl=f"https://api.stocktwits.com/api/2/streams/{symbol}.json"
   tick = yf.Ticker(symbol)
   st.header(symbol)
-  info=tick.info
+  info=tick.info['longName']
   
   st.subheader(info['sector'])
   news=tick.news
