@@ -104,6 +104,7 @@ def get_googlenews(tick1,n):
     desc=[]
     link=[]
     sent=[]
+    URL=[]
     googlenews.clear()
     googlenews.get_news(tick1)
     googlenews.search(tick1)
@@ -114,15 +115,20 @@ def get_googlenews(tick1,n):
     
     nn=pd.DataFrame(x).T
     for i in range(len(nn)):
+      ll='https://'+nn[0][i]['link']
+      tt=nn[0][i]['title']
+      text=f'<a target="_blank" href='+ll+'>'+tt+'</a>'
       title.append(nn[0][i]['title'])
       date.append(nn[0][i]['date'])
       datetime.append(nn[0][i]['datetime'])
       desc.append(nn[0][i]['desc'])
       link.append(nn[0][i]['link'])
+      URL.append(text)
       sentimentArr = SentimentAnalyzer(nn[0][i]['title'])
       sent.append(np.mean(sentimentArr, axis=0))
     Data={
         "title":title,
+        "news":URL,
         "desc":desc,
         "date":date,
         "datetime":datetime,
@@ -142,14 +148,23 @@ def get_googlenews(tick1,n):
     #df1=create_add_tick(df)
     #x1=x.drop(['media','img'],axis=1)
     #x1['datetime']=pd.to_datetime(x1['datetime'],unit='s').dt.date
-    
+    print (df.news)
     return df
 def make_clickable(link):
-    
+    #return  f'<a href="{link}">{link}</a>'
     return  f'<a target="_blank" href="{link}">{link}</a>'
-def change_cell_color(val):
-  if val>.5:
-    return 1#df.style.set_properties(**{'background-color': 'black','color': 'green'})
+    #return '<a target="_blank" href="{}">{}</a>'.format(val,val)
+def make_clickable1(link,title):
+    #return  f'<a href="{link}">{link}</a>'
+    return  f'<a target="_blank" href="{link}">{title}</a>'
+    #return '<a target="_blank" href="{}">{}</a>'.format(val,val)
+
+def color_df(val):
+  if val > .5:
+    color = 'green'
+  else :
+   color = 'red'
+  return f'background-color: {color}'
 '''
 def create_add_tick(dfi):
   #tick=tick2
