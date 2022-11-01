@@ -148,7 +148,7 @@ def get_googlenews(tick1,n):
     #df1=create_add_tick(df)
     #x1=x.drop(['media','img'],axis=1)
     #x1['datetime']=pd.to_datetime(x1['datetime'],unit='s').dt.date
-    print (df.news)
+    #print (df.news)
     return df
 def make_clickable(link):
     #return  f'<a href="{link}">{link}</a>'

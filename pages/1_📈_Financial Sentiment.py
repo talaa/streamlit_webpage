@@ -113,7 +113,7 @@ if (option == "Google News"):
   
   ss.format({'neg':'{:.2%}','pos':'{:.2%}','neu':'{:.2%}','Open':'{:.2f}','Close':'{:.2f}','Volume':'{: ,}','link':make_clickable})
   #ss.format({'neu':'{:.2%}'})
-  
+  ss.hide(subset=['link','title'],axis=1)
   #tiset['More']=st.button('more')
   
   #st.dataframe(tiset.reset_index(drop=True).style.applymap(color_df, subset=['pos']))
