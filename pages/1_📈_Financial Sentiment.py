@@ -1,6 +1,6 @@
 from cmath import inf
 from logging import PlaceHolder
-from turtle import onclick
+#from turtle import onclick
 import streamlit as st
 import yfinance as yf
 import pandas as pd
