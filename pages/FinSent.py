@@ -1,10 +1,10 @@
 import streamlit as st
 import requests
 import datetime
-from finbert_embedding import FinbertEmbedding
+from transformers import pipeline
 
-# Set up the FinbertEmbedding object for sentiment analysis
-finbert = FinbertEmbedding()
+# Set up the sentiment analysis pipeline
+sentiment_analysis_pipeline = pipeline("sentiment-analysis")
 
 # Set up a dictionary to cache news articles
 news_cache = {}
@@ -52,7 +52,8 @@ def display_article(article):
     st.write("Published at:", article["publishedAt"])
     st.write(article["description"])
     st.write("Sentiment analysis:")
-    st.code(str(finbert.predict(article["description"])), language="python")
+    result = sentiment_analysis_pipeline(article["description"])[0]
+    st.code(str(result), language="python")
 
 
 def display_articles(articles):
