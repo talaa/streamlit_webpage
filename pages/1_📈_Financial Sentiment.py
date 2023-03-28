@@ -75,7 +75,7 @@ option=st.sidebar.selectbox("Choose source",("Yahoo Finance","Google News","News
 symbol=st.sidebar.text_input("Symbol",value='AAPL',placeholder="AAPL",max_chars=5)
 submitted1 = st.sidebar.button(label = 'Search Symbol 🔎') 
 tick = yf.Ticker(symbol)
-info=tick.info
+info=tick.fast_info
 st.subheader(option)
 
 #Switch Options
