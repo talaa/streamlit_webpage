@@ -19,7 +19,7 @@ df = pd.DataFrame(columns=columns)
 googlenews = GoogleNews()
 
 # Loop through each company and get the news articles
-for i in range(1, 6):
+for i in range(1, 4):
     googlenews.search(company + " financial news")
     googlenews.getpage(i)
     results = googlenews.result()
@@ -27,7 +27,9 @@ for i in range(1, 6):
     # Loop through each article and add it to the DataFrame
     for result in results:
         # Filter articles based on number of days selected
-        date_str = result["datetime"]
+        if result["datetime"] is None:
+          continue
+        date_str = result["datetime"].strftime('%Y-%m-%d %H:%M:%S.%f')
         date_obj = datetime.strptime(date_str, '%Y-%m-%d %H:%M:%S.%f')
         if (datetime.now() - date_obj).days <= days:
             df = pd.concat([df, pd.DataFrame({
