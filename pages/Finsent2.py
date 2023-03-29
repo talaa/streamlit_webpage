@@ -26,13 +26,8 @@ for i in range(1, 6):
 
     # Loop through each article and add it to the DataFrame
     for result in results:
-        if "source" in result:
-            source = result["source"]
-        else:
-            source = ""
-
         # Filter articles based on number of days selected
-        date_str = result["datetime"].strftime('%Y-%m-%d %H:%M:%S.%f')
+        date_str = result["datetime"]
         date_obj = datetime.strptime(date_str, '%Y-%m-%d %H:%M:%S.%f')
         if (datetime.now() - date_obj).days <= days:
             df = pd.concat([df, pd.DataFrame({
