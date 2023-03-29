@@ -32,7 +32,7 @@ for i in range(1, 6):
             source = ""
 
         # Filter articles based on number of days selected
-        date_str = result["datetime"]
+        date_str = result["datetime"].strftime('%Y-%m-%d %H:%M:%S.%f')
         date_obj = datetime.strptime(date_str, '%Y-%m-%d %H:%M:%S.%f')
         if (datetime.now() - date_obj).days <= days:
             df = pd.concat([df, pd.DataFrame({
