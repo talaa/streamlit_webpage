@@ -17,16 +17,22 @@ import torch.nn.functional as F
 #import tokenizers
 from newspaper import Config
 import nltk
-nltk.download('punkt')
+#nltk.download('punkt')
 
 st.title("Google News")
+# Define a function to download the punkt resource if it's not already downloaded
+@st.cache_data
+def download_nltk_punkt():
+    nltk.download('punkt')
 
 # Define the companies you want to get news for
 company = st.text_input("Enter a company name", "Microsoft")
 days = st.slider("Select number of days", 1, 7)
 
+# Call the download_nltk_punkt() function to download the punkt resource
+download_nltk_punkt()
+
 # Define the columns you want in your DataFrame
-#columns = ["title", "datetime", "desc", "source", "article", "keywords", "Pos", "Neg", "Neutral"]
 columns = ["title", "Pos", "Neg" ,"Neutral", "source","datetime","keywords","desc","article"]
 # Create an empty DataFrame with the columns you defined
 df = pd.DataFrame(columns=columns)
