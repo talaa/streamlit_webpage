@@ -21,7 +21,7 @@ import nltk
 
 st.title("Google News")
 # Define a function to download the punkt resource if it's not already downloaded
-@st.cache
+@st.cache_resource
 def download_nltk_punkt():
     nltk.download('punkt')
 
