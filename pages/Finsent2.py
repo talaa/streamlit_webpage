@@ -35,7 +35,7 @@ user_agent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:78.0) Gecko/20100
 config = Config()
 config.browser_user_agent = user_agent
 #init the cache
-@st.cache_resource
+@st.experimental_memo
 #Making Definitions for Sentiment analysis 
 def SentimentAnalyzer(doc):
     pt_batch = tokenizer(doc,padding=True,truncation=True,max_length=512,return_tensors="pt")
