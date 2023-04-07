@@ -22,11 +22,11 @@ st.title("Google News")
 
 # Define the companies you want to get news for
 company = st.text_input("Enter a company name", "Microsoft")
-days = st.slider("Select number of days", 1, 30)
+days = st.slider("Select number of days", 1, 7)
 
 # Define the columns you want in your DataFrame
-columns = ["title", "datetime", "desc", "source", "article", "keywords", "Pos", "Neg", "Neutral"]
-
+#columns = ["title", "datetime", "desc", "source", "article", "keywords", "Pos", "Neg", "Neutral"]
+columns = ["title", "Pos", "Neg" ,"Neutral", "source","datetime","Keywords","desc","article"]
 # Create an empty DataFrame with the columns you defined
 df = pd.DataFrame(columns=columns)
 
@@ -34,7 +34,8 @@ df = pd.DataFrame(columns=columns)
 user_agent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:78.0) Gecko/20100101 Firefox/78.0'
 config = Config()
 config.browser_user_agent = user_agent
-
+#init the cache
+@st.cache
 #Making Definitions for Sentiment analysis 
 def SentimentAnalyzer(doc):
     pt_batch = tokenizer(doc,padding=True,truncation=True,max_length=512,return_tensors="pt")
@@ -92,6 +93,7 @@ df['datetime'] = pd.to_datetime(df['datetime'],unit='s')
 df[['Pos', 'Neg', 'Neutral']] = df[['Pos', 'Neg', 'Neutral']].apply(lambda x: x*100)
 df.drop_duplicates(subset=['title'], inplace=True)
 df = df.reset_index()
-
+pd.drop('index', axis=1, inplace=True)
+pd.set_index('datetime', inplace=True)
 ss=df.style.highlight_max(axis=1,subset=['Pos','Neg','Neutral'], props='color:white; font-weight:bold; background-color:darkblue;')
 ss
