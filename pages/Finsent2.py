@@ -17,10 +17,12 @@ import torch.nn.functional as F
 #import tokenizers
 from newspaper import Config
 import nltk
-#nltk.download('punkt')
+@st.cache
+def nltK():
+    nltk.download('punkt')
 
 st.title("Google News")
-
+nltk
 # Define the companies you want to get news for
 company = st.text_input("Enter a company name", "Microsoft")
 days = st.slider("Select number of days", 1, 7)
@@ -46,7 +48,6 @@ config.browser_user_agent = user_agent
 #@st.cache(hash_funcs={tokenizers.Tokenizer: hash_tokenizer})
 @st.cache_resource
 def SentimentAnalyzer(doc):
-    nltk.download('punkt')
     pt_batch = tokenizer(doc,padding=True,truncation=True,max_length=512,return_tensors="pt")
     outputs = model(**pt_batch)
     pt_predictions = F.softmax(outputs.logits, dim=-1)
