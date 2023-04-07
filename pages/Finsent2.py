@@ -5,14 +5,14 @@ from GoogleNews import GoogleNews
 from datetime import datetime, timedelta
 from newspaper import Article
 from sklearn.model_selection import train_test_split
-from tensorflow.keras.layers.experimental import preprocessing
+#from tensorflow.keras.layers.experimental import preprocessing
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 tokenizer = AutoTokenizer.from_pretrained("ProsusAI/finbert")
 model = AutoModelForSequenceClassification.from_pretrained("ProsusAI/finbert")
-from keras.models import Sequential
-from keras.layers import Dense
-from keras.callbacks import EarlyStopping
-from tensorflow.keras.optimizers import Adam
+#from keras.models import Sequential
+#from keras.layers import Dense
+#from keras.callbacks import EarlyStopping
+#rom tensorflow.keras.optimizers import Adam
 import torch.nn.functional as F
 #import tokenizers
 from newspaper import Config
