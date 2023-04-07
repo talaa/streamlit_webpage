@@ -17,7 +17,6 @@ import torch.nn.functional as F
 #import tokenizers
 from newspaper import Config
 import nltk
-nltk.download('punkt')
 
 st.title("Google News")
 
@@ -27,7 +26,7 @@ days = st.slider("Select number of days", 1, 7)
 
 # Define the columns you want in your DataFrame
 #columns = ["title", "datetime", "desc", "source", "article", "keywords", "Pos", "Neg", "Neutral"]
-columns = ["title", "Pos", "Neg" ,"Neutral", "source","datetime","Keywords","desc","article"]
+columns = ["title", "Pos", "Neg" ,"Neutral", "source","datetime","keywords","desc","article"]
 # Create an empty DataFrame with the columns you defined
 df = pd.DataFrame(columns=columns)
 
@@ -46,6 +45,7 @@ config.browser_user_agent = user_agent
 #@st.cache(hash_funcs={tokenizers.Tokenizer: hash_tokenizer})
 @st.cache_resource
 def SentimentAnalyzer(doc):
+    nltk.download('punkt')
     pt_batch = tokenizer(doc,padding=True,truncation=True,max_length=512,return_tensors="pt")
     outputs = model(**pt_batch)
     pt_predictions = F.softmax(outputs.logits, dim=-1)
