@@ -17,6 +17,7 @@ import torch.nn.functional as F
 #import tokenizers
 from newspaper import Config
 import nltk
+#nltk.download('punkt')
 
 st.title("Google News")
 
