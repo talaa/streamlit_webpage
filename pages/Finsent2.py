@@ -14,7 +14,7 @@ from keras.layers import Dense
 from keras.callbacks import EarlyStopping
 from tensorflow.keras.optimizers import Adam
 import torch.nn.functional as F
-import tokenizers
+#import tokenizers
 from newspaper import Config
 import nltk
 nltk.download('punkt')
@@ -37,14 +37,14 @@ config = Config()
 config.browser_user_agent = user_agent
 
 # Define a custom hash function for tokenizers.Tokenizer
-def hash_tokenizer(tokenizer):
-    return tokenizer.get_vocab_size()
+#def hash_tokenizer(tokenizer):
+#    return tokenizer.get_vocab_size()
 
 #init the cache 
 # #Making Definitions for Sentiment analysis 
 # Use @st.cache with hash_funcs argument to cache SentimentAnalyzer()
-@st.cache(hash_funcs={tokenizers.Tokenizer: hash_tokenizer})
-#@st.cache_data
+#@st.cache(hash_funcs={tokenizers.Tokenizer: hash_tokenizer})
+@st.cache_resource
 def SentimentAnalyzer(doc):
     pt_batch = tokenizer(doc,padding=True,truncation=True,max_length=512,return_tensors="pt")
     outputs = model(**pt_batch)
