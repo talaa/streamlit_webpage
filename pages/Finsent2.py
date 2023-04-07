@@ -18,11 +18,11 @@ import torch.nn.functional as F
 from newspaper import Config
 import nltk
 @st.cache
-def nltK():
+def nltk_def():
     nltk.download('punkt')
 
 st.title("Google News")
-nltk
+nltk_def
 # Define the companies you want to get news for
 company = st.text_input("Enter a company name", "Microsoft")
 days = st.slider("Select number of days", 1, 7)
