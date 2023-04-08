@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import requests
 import json
+from GoogleNews_grabber import googlenews
 
 
 from streamlit_lottie import st_lottie
@@ -36,7 +37,15 @@ Tick_form="""
       <button type="Submit">Check</button>
     </form>
     """
-    
+with st.form("my_form"):
+   
+   tick_val=st.text_input("Enter the Tick Name","Forexample:AAPL,Boeing,.....")
+
+   # Every form must have a submit button.
+   submitted = st.form_submit_button("Submit")
+   if submitted:
+       st.write("Pease Wait")
+
 with st.container():
   st.write("---")
   left_column,right_column=st.columns((1,2))
@@ -45,13 +54,10 @@ with st.container():
     st.markdown(Tick_form,unsafe_allow_html=True)
 with st.container():
   st.write("---")
-  Data_df=pd.read_json('test.json')
+  #Data_df=pd.read_json('test.json')
+  Data_df =googlenews(tick_val)
   Data_df
   
-df = pd.DataFrame({
-  'first column': [1, 2, 3, 4],
-  'second column': [10, 20, 30, 40]
-})
 
 #df
 #f = open('test.json')
