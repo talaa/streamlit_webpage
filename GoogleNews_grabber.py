@@ -46,7 +46,8 @@ def googlenews_C(company,days):
                 
                 #print(sentiment)
                 df = pd.concat([df, pd.DataFrame({
-                    "title": [result["title"]],
+                    #"title": [result["title"]],
+                    "title": [f'<a target="_blank" href="{result["link"]}">'+result["title"]+'</a>'],
                     "datetime": [result["datetime"]],
                     "desc": [result["desc"]],
                     "source": [result["media"]],
