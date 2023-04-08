@@ -4,10 +4,10 @@ from datetime import datetime
 from newspaper import Article,Config
 
 
-def googlenews_C(company):
+def googlenews_C(company,days):
     # Define the columns you want in your DataFrame
     columns = ["title", "source","datetime","desc","article"]
-    days=3
+    #days=3
     # Create an empty DataFrame with the columns you defined
     df = pd.DataFrame(columns=columns)
     #definition of the config 
@@ -49,7 +49,8 @@ def googlenews_C(company):
                     "desc": [result["desc"]],
                     "source": [result["media"]],
                     "article": [result["link"]],
-                    "keywords": [', '.join(article.keywords)]
+                    #"keywords": [', '.join(article.keywords)]
+                    "keywords": [article.keywords]
                     
                 })])
 

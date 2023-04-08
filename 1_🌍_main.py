@@ -6,6 +6,7 @@ import json
 #sys.path.insert(0, '/Utilities/GoogleNews_grabber')
 
 from GoogleNews_grabber import googlenews_C
+from Yfinance_history import get_historical_data
 
 
 from streamlit_lottie import st_lottie
@@ -51,6 +52,7 @@ with st.container():
     with st.form("my_form"):
       
       tick_val=st.text_input("Enter the Tick Name","AAPL")
+      days_back = st.slider("Select the number of days to look back for news articles:", 1, 7, 3)
 
       # Every form must have a submit button.
       submitted = st.form_submit_button("Submit")
@@ -59,8 +61,14 @@ with st.container():
 with st.container():
   st.write("---")
   #Data_df=pd.read_json('test.json')
-  Data_df =googlenews_C(tick_val)
+  Data_df =googlenews_C(tick_val,days_back)
   Data_df
+with st.container():
+  st.write("---")
+  #company_symbol = st.text_input("Enter a company symbol (e.g. AAPL):")
+  
+  tick_df =get_historical_data(tick_val,days_back)
+  tick_df
   
 
 #df
