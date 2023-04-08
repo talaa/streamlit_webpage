@@ -2,6 +2,9 @@ import streamlit as st
 import pandas as pd
 import requests
 import json
+import sys
+sys.path.insert(0, '/Utilities/GoogleNews_grabber')
+
 from GoogleNews_grabber import googlenews
 
 
@@ -31,27 +34,28 @@ with st.container():
   with up_right_column:
     st_lottie(lottie_file,height=300,key="Financial News")
 #the Form 
-Tick_form="""
-    <form action="" method="GET">
-      <input type="Text" placeholder="Forexample:AAPL,Boeing,....." required>
-      <button type="Submit">Check</button>
-    </form>
-    """
-with st.form("my_form"):
-   
-   tick_val=st.text_input("Enter the Tick Name","Forexample:AAPL,Boeing,.....")
+#Tick_form="""
+#    <form action="" method="GET">
+#      <input type="Text" placeholder="Forexample:AAPL,Boeing,....." required>
+#      <button type="Submit">Check</button>
+#    </form>
+#    """
 
-   # Every form must have a submit button.
-   submitted = st.form_submit_button("Submit")
-   if submitted:
-       st.write("Pease Wait")
 
 with st.container():
   st.write("---")
   left_column,right_column=st.columns((1,2))
   with left_column:
     st.subheader("Check The company news")
-    st.markdown(Tick_form,unsafe_allow_html=True)
+    #st.markdown(Tick_form,unsafe_allow_html=True)
+    with st.form("my_form"):
+      
+      tick_val=st.text_input("Enter the Tick Name","AAPL")
+
+      # Every form must have a submit button.
+      submitted = st.form_submit_button("Submit")
+      if submitted:
+          st.write("Pease Wait")
 with st.container():
   st.write("---")
   #Data_df=pd.read_json('test.json')
