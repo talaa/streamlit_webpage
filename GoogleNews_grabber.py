@@ -63,6 +63,6 @@ def googlenews_C(company,days):
     
     df.drop_duplicates(subset=['title'], inplace=True)
     df = df.reset_index()
-    #df.drop('index', axis=1, inplace=True)
-    #df.set_index('datetime', inplace=True)
+    df.drop('index', axis=1, inplace=True)
+    df.set_index('datetime', inplace=True)
     return df
