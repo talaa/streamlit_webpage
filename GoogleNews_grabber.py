@@ -3,12 +3,12 @@ from GoogleNews import GoogleNews
 from datetime import datetime
 from newspaper import Article,Config
 
-def make_clickable(url):
-    return f'<a href="{url}" target="_blank">{url}</a>'
+def make_clickable(url,title):
+    return f'<a href="{url}" target="_blank">{title}</a>'
 
 def googlenews_C(company,days):
     # Define the columns you want in your DataFrame
-    columns = ["title", "source","datetime","desc","article"]
+    columns = ["title", "source","datetime","desc"]
     #days=3
     # Create an empty DataFrame with the columns you defined
     df = pd.DataFrame(columns=columns)
@@ -46,8 +46,8 @@ def googlenews_C(company,days):
                 
                 #print(sentiment)
                 df = pd.concat([df, pd.DataFrame({
-                    #"title": [result["title"]],
-                    "title": [f'<a target="_blank" href="{result["link"]}">'+result["title"]+'</a>'],
+                    "title": [make_clickable(result["link"],result["title"])],
+                    #"title": [f'<a target="_blank" href="{result["link"]}">'+result["title"]+'</a>'],
                     "datetime": [result["datetime"]],
                     "desc": [result["desc"]],
                     "source": [result["media"]],
@@ -63,6 +63,6 @@ def googlenews_C(company,days):
     
     df.drop_duplicates(subset=['title'], inplace=True)
     df = df.reset_index()
-    df.drop('index', axis=1, inplace=True)
-    df.set_index('datetime', inplace=True)
+    #df.drop('index', axis=1, inplace=True)
+    #df.set_index('datetime', inplace=True)
     return df
