@@ -27,7 +27,7 @@ def download_nltk_punkt():
 
 # Define the companies you want to get news for
 company = st.text_input("Enter a company name", "Microsoft")
-days = st.slider("Select number of days", 1, 7)
+days = st.slider("Select number of days", 1, 7,3)
 
 # Call the download_nltk_punkt() function to download the punkt resource
 download_nltk_punkt()
