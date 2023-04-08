@@ -3,22 +3,23 @@ from GoogleNews import GoogleNews
 from datetime import datetime
 from newspaper import Article,Config
 
-# Define the columns you want in your DataFrame
-columns = ["title", "source","datetime","desc","article"]
-days=3
-# Create an empty DataFrame with the columns you defined
-df = pd.DataFrame(columns=columns)
-#definition of the config 
-user_agent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:78.0) Gecko/20100101 Firefox/78.0'
-config = Config()
-config.browser_user_agent = user_agent
-# Create a GoogleNews object
-googlenews = GoogleNews()
 
-# Create an empty set to store unique article titles
-unique_titles = set()
 def googlenews_C(company):
-# Loop through each company and get the news articles
+    # Define the columns you want in your DataFrame
+    columns = ["title", "source","datetime","desc","article"]
+    days=3
+    # Create an empty DataFrame with the columns you defined
+    df = pd.DataFrame(columns=columns)
+    #definition of the config 
+    user_agent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:78.0) Gecko/20100101 Firefox/78.0'
+    config = Config()
+    config.browser_user_agent = user_agent
+    # Create a GoogleNews object
+    googlenews = GoogleNews()
+
+    # Create an empty set to store unique article titles
+    unique_titles = set()
+    # Loop through each company and get the news articles
     for i in range(1, 4):
         
         googlenews.search(company + " financial news")
