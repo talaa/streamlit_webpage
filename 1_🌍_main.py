@@ -62,7 +62,8 @@ with st.container():
   st.write("---")
   #Data_df=pd.read_json('test.json')
   Data_df =googlenews_C(tick_val,days_back)
-  st.write(Data_df.to_html(escape=False, index=False), unsafe_allow_html=True)
+  st.dataframe(Data_df)
+  #st.write(Data_df.to_html(escape=False, index=False), unsafe_allow_html=True)
 with st.container():
   st.write("---")
   #company_symbol = st.text_input("Enter a company symbol (e.g. AAPL):")
