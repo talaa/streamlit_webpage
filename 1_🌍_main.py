@@ -45,8 +45,8 @@ with st.container():
 
 with st.container():
   st.write("---")
-  left_column,right_column=st.columns((1,2))
-  with left_column:
+  #left_column,right_column=st.columns((1,2))
+  with st.container:
     st.subheader("Check The company news")
     #st.markdown(Tick_form,unsafe_allow_html=True)
     with st.form("my_form"):

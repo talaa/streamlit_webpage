@@ -50,7 +50,8 @@ def googlenews_C(company,days):
                     "datetime": [result["datetime"]],
                     "desc": [result["desc"]],
                     "source": [result["media"]],
-                    "article": [result["link"].apply(make_clickable)],
+                    "article": [result["link"]],
+                    "article":[make_clickable(result["link"])],
                     #"keywords": [', '.join(article.keywords)]
                     "keywords": [article.keywords]
                     
