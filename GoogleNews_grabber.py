@@ -3,6 +3,8 @@ from GoogleNews import GoogleNews
 from datetime import datetime
 from newspaper import Article,Config
 
+def make_clickable(url):
+    return f'<a href="{url}" target="_blank">{url}</a>'
 
 def googlenews_C(company,days):
     # Define the columns you want in your DataFrame
@@ -48,7 +50,7 @@ def googlenews_C(company,days):
                     "datetime": [result["datetime"]],
                     "desc": [result["desc"]],
                     "source": [result["media"]],
-                    "article": [result["link"]],
+                    "article": [result["link"]].apply(make_clickable),
                     #"keywords": [', '.join(article.keywords)]
                     "keywords": [article.keywords]
                     
