@@ -46,18 +46,18 @@ with st.container():
 with st.container():
   st.write("---")
   #left_column,right_column=st.columns((1,2))
-  with st.container:
-    st.subheader("Check The company news")
+ 
+  st.subheader("Check The company news")
     #st.markdown(Tick_form,unsafe_allow_html=True)
-    with st.form("my_form"):
+  with st.form("my_form"):
       
-      tick_val=st.text_input("Enter the Tick Name","AAPL")
-      days_back = st.slider("Select the number of days to look back for news articles:", 1, 7, 3)
+    tick_val=st.text_input("Enter the Tick Name","AAPL")
+    days_back = st.slider("Select the number of days to look back for news articles:", 1, 7, 3)
 
       # Every form must have a submit button.
-      submitted = st.form_submit_button("Submit")
-      if submitted:
-          st.write("Pease Wait")
+    submitted = st.form_submit_button("Submit")
+    if submitted:
+        st.write("Pease Wait")
 with st.container():
   st.write("---")
   #Data_df=pd.read_json('test.json')
