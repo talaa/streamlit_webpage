@@ -5,7 +5,7 @@ import json
 #import sys
 #sys.path.insert(0, '/Utilities/GoogleNews_grabber')
 
-from ..Utilities.GoogleNews_grabber import googlenews
+from GoogleNews_grabber import googlenews
 
 
 from streamlit_lottie import st_lottie
