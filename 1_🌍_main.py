@@ -2,10 +2,10 @@ import streamlit as st
 import pandas as pd
 import requests
 import json
-import sys
-sys.path.insert(0, '/Utilities/GoogleNews_grabber')
+#import sys
+#sys.path.insert(0, '/Utilities/GoogleNews_grabber')
 
-from GoogleNews_grabber import googlenews
+from ..Utilities.GoogleNews_grabber import googlenews
 
 
 from streamlit_lottie import st_lottie
