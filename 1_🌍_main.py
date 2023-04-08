@@ -64,7 +64,7 @@ with st.container():
   Data_df =googlenews_C(tick_val,days_back)
   #Style_df=Data_df.style.format({"url": format_url_column})
   st.dataframe(Data_df)
-  #st.write(Data_df.to_html(escape=False, index=False), unsafe_allow_html=True)
+  st.write(Data_df.to_html(escape=False, index=False), unsafe_allow_html=True)
 with st.container():
   st.write("---")
   #company_symbol = st.text_input("Enter a company symbol (e.g. AAPL):")
