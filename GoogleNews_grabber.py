@@ -17,7 +17,7 @@ googlenews = GoogleNews()
 
 # Create an empty set to store unique article titles
 unique_titles = set()
-def googlenews(company):
+def googlenews_C(company):
 # Loop through each company and get the news articles
     for i in range(1, 4):
         

@@ -5,7 +5,7 @@ import json
 #import sys
 #sys.path.insert(0, '/Utilities/GoogleNews_grabber')
 
-from GoogleNews_grabber import googlenews
+from GoogleNews_grabber import googlenews_C
 
 
 from streamlit_lottie import st_lottie
@@ -59,7 +59,7 @@ with st.container():
 with st.container():
   st.write("---")
   #Data_df=pd.read_json('test.json')
-  Data_df =googlenews(tick_val)
+  Data_df =googlenews_C(tick_val)
   Data_df
   
 
